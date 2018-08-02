@@ -1,9 +1,11 @@
 const express = require('express')
 const app = express()
-const port = 7000
+const port = 7001
+const queries = require("./queries")
 
 app.get('/', (req, res, next) => {
-    res.send('scared cat')
+    queries.getAll()
+        .then(cats => res.json({cats}))
 })
 
 app.listen(port, () => {
